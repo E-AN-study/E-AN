@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 // import "../styles/mixins/_flexbox.scss";
 
 function App() {
@@ -6,10 +6,9 @@ function App() {
     <div className="App">
       <div className="gosegu">
         <p>ㅎㅇㅎㅇ</p>
-        <p>하하</p>
+        <p>ㅎㅇㅎㅇ</p>
         <p>ㅎㅇㅂㅇ</p>
         <p>ㅎㅇㅎㅇ</p>
-        <p>준기TV</p>
       </div>
     </div>
   );
