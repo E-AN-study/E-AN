@@ -1,16 +1,9 @@
-//import React from "react";
-// import "../styles/mixins/_flexbox.scss";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <div className="gosegu">
-        <p>ㅎㅇㅎㅇ</p>
-        <p>ㅎㅇㅎㅇ</p>
-        <p>ㅎㅇㅂㅇ</p>
-        <p>ㅎㅇㅎㅇ</p>
-      </div>
-    </div>
-  );
+  const [count, setCount] = useState(0);
+
+  return <></>;
 }
+
 export default App;
