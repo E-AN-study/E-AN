@@ -7,6 +7,6 @@ function App() {
       <div>asdas</div>
     </>
   );
-}
+};
 
 export default App;
