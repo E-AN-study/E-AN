@@ -1,7 +1,10 @@
+import { Test } from './pages/Test';
+
 function App() {
   return (
     <>
-      <div>gd</div>
+      <Test></Test>
+      <div>asdas</div>
     </>
   );
 }
