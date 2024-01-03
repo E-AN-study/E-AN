@@ -1,11 +1,10 @@
-import React from 'react';
-import '../src/styles/App.scss';
+import { Test } from './pages/Test';
 
-const App = () => {
+function App() {
   return (
-    <div className="App">
-      <h1 className="Title">Scss Component</h1>
-    </div>
+    <>
+      <div>gd</div>
+    </>
   );
 };
 
