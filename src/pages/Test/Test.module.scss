@@ -1,0 +1,4 @@
+.wrap {
+  @include flexbox(center, center);
+  background-color: $skyblue;
+}
