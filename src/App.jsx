@@ -1,10 +1,9 @@
-import { Test } from './pages/Test';
+import MainPage from './pages/Test/MainPage';
 
 function App() {
   return (
     <>
-      <Test></Test>
-      <div>asdas</div>
+      <MainPage />
     </>
   );
 };
