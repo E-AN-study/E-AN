@@ -1,0 +1,19 @@
+.btn {
+  border-radius: 20rem;
+  padding: 1.2rem 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border: 0.2rem solid transparent;
+  background: $brown-40;
+}
+
+.btn span {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.btn:active {
+  background: $brown-50;
+}
