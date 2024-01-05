@@ -1,12 +1,11 @@
-import { Test } from './pages/Test';
+import { TextList } from "./pages/TextList";
 
 function App() {
   return (
     <>
-      <Test></Test>
-      <div>asdas</div>
+      <TextList></TextList>
     </>
   );
-};
+}
 
 export default App;
