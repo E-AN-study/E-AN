@@ -1,4 +1,10 @@
 import "./ChapterCard.scss";
+import PropTypes from "prop-types";
+
+const propTypes = {
+  title: PropTypes.string,
+  index: PropTypes.num,
+};
 
 function ChapterCard({ title, index }) {
   return (
@@ -12,5 +18,7 @@ function ChapterCard({ title, index }) {
     </button>
   );
 }
+
+ChapterCard.propTypes = propTypes;
 
 export default ChapterCard;
