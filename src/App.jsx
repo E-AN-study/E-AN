@@ -1,12 +1,11 @@
-import { Test } from './pages/Test';
+import { WrapComment } from '@/components/Comment/WrapComment';
 
 function App() {
   return (
     <>
-      <Test></Test>
-      <div>asdas</div>
+      <WrapComment />
     </>
   );
-};
+}
 
 export default App;
