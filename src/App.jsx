@@ -1,4 +1,4 @@
-import { Test } from './pages/Test';
+import { Test } from "./pages/Test";
 
 function App() {
   return (
@@ -7,6 +7,6 @@ function App() {
       <div>asdas</div>
     </>
   );
-};
+}
 
 export default App;
