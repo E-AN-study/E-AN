@@ -1,12 +1,11 @@
-import { Test } from './pages/Test';
+import Edit from "./pages/edit";
 
 function App() {
   return (
     <>
-      <Test></Test>
-      <div>asdas</div>
+      <Edit />
     </>
   );
-};
+}
 
 export default App;
