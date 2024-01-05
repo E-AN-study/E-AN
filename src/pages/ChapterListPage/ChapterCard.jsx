@@ -5,7 +5,7 @@ import messages from "../../assets/messages.svg";
 
 const propTypes = {
   title: PropTypes.string,
-  index: PropTypes.num,
+  index: PropTypes.number,
 };
 
 function ChapterCard({ title, index }) {
