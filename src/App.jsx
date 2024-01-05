@@ -1,9 +1,8 @@
-import { WrapComment } from '@/components/Comment/WrapComment';
 
 function App() {
   return (
     <>
-      <WrapComment />
+
     </>
   );
 }
