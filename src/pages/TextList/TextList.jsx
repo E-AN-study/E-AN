@@ -23,9 +23,9 @@ export function TextList() {
         </button>
       </div>
       <div className={cx("textCardList")}>
-      <div className={cx("listBtn")}>
-        <Button text={"글 목록"} />
-      </div>
+        <div className={cx("listBtn")}>
+          <Button text={"글 목록"} />
+        </div>
         <div className={cx("listTitle")}>
           <img className={cx("messageIcon")} src={messages} alt="logo image" />
           이미 n명이 공부했습니다.
