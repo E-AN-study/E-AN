@@ -1,0 +1,14 @@
+.Header {
+  @include flexbox(start, center);
+  padding: 2rem;
+
+  &-logoIcon {
+    width: 5.6rem;
+    height: 6.5rem;
+  }
+
+  &-logoText {
+    width: 15rem;
+    height: 4.6rem;
+  }
+}
