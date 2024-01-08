@@ -1,11 +1,19 @@
+import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./TextCard.module.scss";
+import { WrapComment } from "../Comment/WrapComment";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
 
 const cx = classNames.bind(styles);
 
 function TextCard() {
+  const [openComment, setOpenComment] = useState(false);
+
+  const handleComment = () => {
+    setOpenComment((prevState) => !prevState);
+  };
+
   return (
     <>
       <div className={cx("container")}>
@@ -31,9 +39,12 @@ function TextCard() {
             // onClick={handleLikeButtonClick}
           />
           <div className={cx("comment")}>좋아요 112</div>
-          <button className={cx("comment")}>댓글 2</button>
+          <button className={cx("comment")} onClick={handleComment}>
+            {openComment ? "닫기" : "댓글 2"}
+          </button>
         </div>
       </div>
+      {openComment && <WrapComment />}
     </>
   );
 }
