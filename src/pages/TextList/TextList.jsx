@@ -1,6 +1,6 @@
 import styles from "./TextList.module.scss";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/EAN-logo.png";
 import linkIcon from "../../assets/link.svg";
 import kakaotalk from "../../assets/kakaotalk.svg";
@@ -11,6 +11,19 @@ import Button from "../../components/Button/Button";
 const cx = classNames.bind(styles);
 
 export function TextList() {
+  const baseUrl = 'http://localhost:5173/';
+  const location = useLocation();
+
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      
+      alert('복사 성공!');
+    } catch (error) {
+      alert('복사 실패!');
+    }
+  };
+
   return (
     <div className={cx("container")}>
       <Link to="/">
@@ -18,7 +31,7 @@ export function TextList() {
       </Link>
       <h1 className={cx("title")}>챕터 1 CPU</h1>
       <div className={cx("shareButton")}>
-        <button className={cx("linkIcon")}>
+        <button className={cx("linkIcon")} onClick={() => handleCopyClipBoard(`${baseUrl}${location.pathname}`)}>
           <img src={linkIcon} />
         </button>
         <button className={cx("kakaotalk")}>
