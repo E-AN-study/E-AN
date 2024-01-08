@@ -11,6 +11,19 @@ import mockData from '../../utils/mock';
 const cx = classNames.bind(styles);
 
 export function TextList() {
+  const baseUrl = 'http://localhost:5173';
+  const location = useLocation();
+
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      
+      alert('복사 성공!');
+    } catch (error) {
+      alert('복사 실패!');
+    }
+  };
+
   return (
     <div className={cx('container')}>
       <img className={cx('logoImg')} src={logo} alt='logo image' />
@@ -23,12 +36,14 @@ export function TextList() {
           <img src={kakaotalk} />
         </button>
       </div>
-      <div className={cx('textCardList')}>
-        <div className={cx('listBtn')}>
-          <Button text={'글 목록'} />
+      <div className={cx("textCardList")}>
+        <div className={cx("listBtn")}>
+          <Link to="/List">
+            <Button text={"글 목록"} />
+          </Link>
         </div>
-        <div className={cx('listTitle')}>
-          <img className={cx('messageIcon')} src={messages} alt='logo image' />
+        <div className={cx("listTitle")}>
+          <img className={cx("messageIcon")} src={messages} alt="logo image" />
           이미 n명이 공부했습니다.
         </div>
         <TextCard data={mockData}></TextCard>
@@ -39,8 +54,10 @@ export function TextList() {
         <TextCard data={mockData}></TextCard>
         <TextCard data={mockData}></TextCard>
       </div>
-      <div className={cx('studyBtn')}>
-        <Button text={'나도 공부하기'} />
+      <div className={cx("studyBtn")}>
+        <Link to="/Edit">
+          <Button text={"나도 공부하기"} />
+        </Link>
       </div>
     </div>
   );

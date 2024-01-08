@@ -4,11 +4,11 @@
 
 .chapterlistpage-title {
   margin: 0 auto;
-  color: var(--Grayscale-60, #000);
+  color: white;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
+}/*# sourceMappingURL=index.module.css.map */
