@@ -7,19 +7,10 @@ import styles from './WrapComment.module.scss';
 
 const cx = classNames.bind(styles);
 
-const data = [
-  {
-    id: '0',
-    content: '준기님 화이팅',
-  },
-  {
-    id: '1',
-    content: '소은씨 화이팅',
-  },
-];
-export function WrapComment() {
+export function WrapComment(commentData) {
   const [input, setInput] = useState('');
-  const [comment, setComment] = useState(data);
+  const [comment, setComment] = useState(commentData.commentData);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const addComment = () => {
     if (input !== '') {
@@ -34,18 +25,24 @@ export function WrapComment() {
     }
   };
 
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 3); // 보이는 댓글 수 3개씩 증가
+  };
+
   return (
     <>
       <ul className={cx('commentList')}>
-        {comment.map((item) => {
+        {comment.slice(0, visibleCount).map((item) => {
           return (
             <li className={cx('commentList-content')} key={item.id}>
               <Comment>{item.content}</Comment>
             </li>
           );
         })}
+        {visibleCount < comment.length && (
+          <button onClick={handleLoadMore}>더보기</button>
+        )}
       </ul>
-
       <div className={cx('inputBox')}>
         <input
           className={cx('inputBox-input')}
@@ -55,6 +52,7 @@ export function WrapComment() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => (e.key === 'Enter' ? addComment() : null)}
         />
+
         <button
           className={cx('inputBox-button')}
           disabled=''
