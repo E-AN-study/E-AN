@@ -1,16 +1,19 @@
-import styles from './TextList.module.scss';
-import classNames from 'classnames/bind';
-import logo from '../../assets/EAN-logo.png';
-import linkIcon from '../../assets/link.svg';
-import kakaotalk from '../../assets/kakaotalk.svg';
-import messages from '../../assets/messages.svg';
-import TextCard from '../../components/TextCard/TextCard';
-import Button from '../../components/Button/Button';
-import mockData from '../../utils/mock';
+import styles from "./TextList.module.scss";
+import classNames from "classnames/bind";
+import logo from "../../assets/EAN-logo.png";
+import linkIcon from "../../assets/link.svg";
+import kakaotalk from "../../assets/kakaotalk.svg";
+import messages from "../../assets/messages.svg";
+import TextCard from "../../components/TextCard/TextCard";
+import Button from "../../components/Button/Button";
 
 const cx = classNames.bind(styles);
+import { useEffect, useState } from "react";
+import { shareKakaoLink } from "../../utils/shareKaKaoLink";
+import { Link, useLocation } from "react-router-dom";
 
 export function TextList() {
+  let url = window.location.href;
   const baseUrl = 'http://localhost:5173';
   const location = useLocation();
 
@@ -25,39 +28,44 @@ export function TextList() {
   };
 
   return (
-    <div className={cx('container')}>
-      <img className={cx('logoImg')} src={logo} alt='logo image' />
-      <h1 className={cx('title')}>챕터 1 CPU</h1>
-      <div className={cx('shareButton')}>
-        <button className={cx('linkIcon')}>
+    <div className={cx("container")}>
+      <Link to="/">
+        <img className={cx("logoImg")} src={logo} alt="logo image" />
+      </Link>
+      <h1 className={cx("title")}>챕터 1 CPU</h1>
+      <div className={cx("shareButton")}>
+        <button className={cx("linkIcon")} onClick={() => handleCopyClipBoard(${baseUrl}${location.pathname})}>
           <img src={linkIcon} />
         </button>
-        <button className={cx('kakaotalk')}>
+      </div>
+      <div>
+        {/* <button className={cx("kakaotalk")} onClick={handleLogin}>
+        <img src={kakaotalk} />
+      </button> */}
+
+        <button className={cx("kakaotalk")} onClick={() => shareKakaoLink(url)}>
           <img src={kakaotalk} />
         </button>
       </div>
+
       <div className={cx("textCardList")}>
         <div className={cx("listBtn")}>
-          <Link to="/List">
-            <Button text={"글 목록"} />
-          </Link>
+          <Button text={"글 목록"} />
         </div>
         <div className={cx("listTitle")}>
           <img className={cx("messageIcon")} src={messages} alt="logo image" />
           이미 n명이 공부했습니다.
         </div>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
-        <TextCard data={mockData}></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
+        <TextCard></TextCard>
       </div>
       <div className={cx("studyBtn")}>
-        <Link to="/Edit">
-          <Button text={"나도 공부하기"} />
-        </Link>
+        <Button text={"나도 공부하기"} />
       </div>
     </div>
   );
