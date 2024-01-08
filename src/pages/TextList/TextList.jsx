@@ -6,10 +6,14 @@ import kakaotalk from "../../assets/kakaotalk.svg";
 import messages from "../../assets/messages.svg";
 import TextCard from "../../components/TextCard/TextCard";
 import Button from "../../components/Button/Button";
-
+import { Helmet } from "react-helmet";
+import { data } from "../../utils/mock";
 const cx = classNames.bind(styles);
-
+import { useEffect, useState } from "react";
+import { shareKakaoLink } from "../../utils/shareKaKaoLink";
 export function TextList() {
+  let url = window.location.href;
+
   return (
     <div className={cx("container")}>
       <img className={cx("logoImg")} src={logo} alt="logo image" />
@@ -18,10 +22,17 @@ export function TextList() {
         <button className={cx("linkIcon")}>
           <img src={linkIcon} />
         </button>
-        <button className={cx("kakaotalk")}>
+      </div>
+      <div>
+        {/* <button className={cx("kakaotalk")} onClick={handleLogin}>
+        <img src={kakaotalk} />
+      </button> */}
+
+        <button className={cx("kakaotalk")} onClick={() => shareKakaoLink(url)}>
           <img src={kakaotalk} />
         </button>
       </div>
+
       <div className={cx("textCardList")}>
         <div className={cx("listBtn")}>
           <Button text={"글 목록"} />

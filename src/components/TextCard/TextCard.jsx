@@ -3,6 +3,7 @@ import styles from "./TextCard.module.scss";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
 import { useState } from "react";
+
 const cx = classNames.bind(styles);
 
 function TextCard() {
