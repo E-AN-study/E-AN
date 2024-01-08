@@ -11,7 +11,7 @@ import Button from "../../components/Button/Button";
 const cx = classNames.bind(styles);
 
 export function TextList() {
-  const baseUrl = 'http://localhost:5173/';
+  const baseUrl = 'http://localhost:5173';
   const location = useLocation();
 
   const handleCopyClipBoard = async (text) => {
