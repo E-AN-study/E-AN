@@ -2,10 +2,16 @@ import classNames from "classnames/bind";
 import styles from "./TextCard.module.scss";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
 function TextCard() {
+  const [like, setLike] = useState(0);
+
+  const handleLikeButtonClick = () => {
+    setLike(like + 1);
+  };
   return (
     <>
       <div className={cx("container")}>
@@ -28,9 +34,10 @@ function TextCard() {
             className={cx("likeButton")}
             src={likeButton}
             alt="thumbs-up image"
-            // onClick={handleLikeButtonClick}
+            onClick={handleLikeButtonClick}
           />
-          <div className={cx("comment")}>좋아요 112</div>
+
+          <div className={cx("comment")}>좋아요 {like}</div>
           <button className={cx("comment")}>댓글 2</button>
         </div>
       </div>

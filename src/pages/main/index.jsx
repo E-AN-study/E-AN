@@ -1,6 +1,6 @@
 // import React from "react";
 // import { Helmet } from "react-helmet";
-import MainLogo from "./MainLogo";
+//import MainLogo from "./MainLogo";
 import SortButton from "./SortButton";
 
 function MainPage() {
@@ -9,7 +9,7 @@ function MainPage() {
       {/* <Helmet> */}
       <title>E.AN</title>
       {/* </Helmet> */}
-      <MainLogo />
+
       <SortButton />
     </>
   );
