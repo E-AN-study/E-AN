@@ -23,7 +23,7 @@ export const shareKakaoLink = (url) => {
         {
           title: "웹으로 보기",
           link: {
-            webUrl: "http://localhost:5173/textlist",
+            webUrl: url,
           },
         },
       ],
