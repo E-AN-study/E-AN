@@ -17,7 +17,6 @@ const supabaseKey = import.meta.env.VITE_APP_SECRET_CODE;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const cx = classNames.bind(styles);
-
 export function TextList() {
   let url = window.location.href;
   const baseUrl = "http://localhost:5173";
@@ -63,6 +62,7 @@ export function TextList() {
           <img src={kakaotalk} />
         </button>
       </div>
+
       <div className={cx("textCardList")}>
         <div className={cx("listBtn")}>
           <Link to="/List">
