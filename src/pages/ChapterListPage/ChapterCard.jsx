@@ -39,7 +39,7 @@ function ChapterCard({ title, index }) {
           <img src={messages} alt="Messages" />
           <div className="chapter-card-writtenarticle">작성된 글</div>
           <div className="chapter-card-writtenarticle-num">
-            {usersData.length}
+            {usersData.length}개
           </div>
         </div>
       </button>
