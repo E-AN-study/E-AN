@@ -12,6 +12,8 @@ import Button from "../../components/Button/Button";
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
+const supabaseUrl = import.meta.env.VITE_APP_KEY;
+const supabaseKey = import.meta.env.VITE_APP_SECRET_CODE;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const cx = classNames.bind(styles);
