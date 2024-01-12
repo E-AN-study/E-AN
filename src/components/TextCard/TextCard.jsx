@@ -4,6 +4,7 @@ import styles from "./TextCard.module.scss";
 import { WrapComment } from "../Comment/WrapComment";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +29,9 @@ function TextCard(data) {
               <div className={cx("prfileName")}>{data.data.name}</div>
               <div className={cx("profileDate")}>{data.data.created_at}</div>
             </div>
-            <p className={cx("content")}>{data.data.qs}</p>
+            <a href={data.data.link}>
+              <p className={cx("content")}>{data.data.qs}</p>
+            </a>
           </div>
         </div>
         <div className={cx("commetWrapper")}>
