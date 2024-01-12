@@ -31,7 +31,7 @@ function ChapterCard({ title, index }) {
   }, []);
 
   return (
-    <Link to="/textlist">
+    <Link to={`/textlist/${index}`} state={{ title: title }}>
       <button className="chapter-card">
         <div className="chapter-card-badge">Chapter {index}</div>
         <div className="chapter-card-title">{title}</div>

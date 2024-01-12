@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { shareKakaoLink } from "../../utils/shareKaKaoLink";
 import styles from "./TextList.module.scss";
 import classNames from "classnames/bind";
@@ -17,12 +17,16 @@ const supabaseKey = import.meta.env.VITE_APP_SECRET_CODE;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const cx = classNames.bind(styles);
+
 export function TextList() {
+  const { index } = useParams();
+  const location = useLocation();
+  const title = location.state ? location.state.title : "";
+
   let url = window.location.href;
   const baseUrl = "http://localhost:5173";
-  const location = useLocation();
 
-  const handleCopyClipBoard = async (text) => {
+  const handleCopyClipBoard = async text => {
     try {
       await navigator.clipboard.writeText(text);
 
@@ -42,18 +46,24 @@ export function TextList() {
       setUsersData(users); // Update the state with the fetched data
     }
   }
+
   useEffect(() => {
     fetchUsers();
   }, []);
-  console.log(usersData);
+
   return (
     <div className={cx("container")}>
       <Link to="/">
         <img className={cx("logoImg")} src={logo} alt="logo image" />
       </Link>
-      <h1 className={cx("title")}>챕터 1 CPU</h1>
+      <h1 className={cx("title")}>
+        챕터 {index} {title}
+      </h1>
       <div className={cx("shareButton")}>
-        <button className={cx("linkIcon")} onClick={() => handleCopyClipBoard(`${baseUrl}${location.pathname}`)}>
+        <button
+          className={cx("linkIcon")}
+          onClick={() => handleCopyClipBoard(`${baseUrl}${location.pathname}`)}
+        >
           <img src={linkIcon} />
         </button>
       </div>
