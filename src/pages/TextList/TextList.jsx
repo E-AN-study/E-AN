@@ -26,7 +26,7 @@ export function TextList() {
   let url = window.location.href;
   const baseUrl = "http://localhost:5173";
 
-  const handleCopyClipBoard = async text => {
+  const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
 
@@ -39,7 +39,7 @@ export function TextList() {
 
   // Step 2: Modify fetchUsers to update the state
   async function fetchUsers() {
-    let { data: users, error } = await supabase.from("ean").select("*");
+    let { data: users, error } = await supabase.from(`ean${index}`).select("*");
     if (error) {
       console.log("Error", error);
     } else {
@@ -60,10 +60,7 @@ export function TextList() {
         챕터 {index} {title}
       </h1>
       <div className={cx("shareButton")}>
-        <button
-          className={cx("linkIcon")}
-          onClick={() => handleCopyClipBoard(`${baseUrl}${location.pathname}`)}
-        >
+        <button className={cx("linkIcon")} onClick={() => handleCopyClipBoard(`${baseUrl}${location.pathname}`)}>
           <img src={linkIcon} />
         </button>
         <button className={cx("kakaotalk")} onClick={() => shareKakaoLink(url)}>
@@ -88,7 +85,7 @@ export function TextList() {
         ))}
       </div>
       <div className={cx("studyBtn")}>
-        <Link to="/Edit">
+        <Link to={`/Edit/${index}`}>
           <Button text={"나도 공부하기"} />
         </Link>
       </div>

@@ -32,7 +32,7 @@ function TextCard(data) {
               <div className={cx("profileDate")}>{formatDate(data.data.created_at)}</div>
             </div>
             <a href={data.data.link}>
-              <p className={cx("content")}>{data.data.qs}</p>
+              <p className={cx("content")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
             </a>
           </div>
         </div>
