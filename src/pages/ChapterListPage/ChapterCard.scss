@@ -22,13 +22,23 @@
   line-height: 25px;
 }
 
-.chapter-card-receivedquestion-section {
+.chapter-card-writtenarticle-section {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.chapter-card-receivedquestion {
+.chapter-card-writtenarticle {
+  color: var(--Grayscale-40, #818181);
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: ABeeZee;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.chapter-card-writtenarticle-num {
   color: var(--Grayscale-40, #818181);
   font-feature-settings: "clig" off, "liga" off;
   font-family: ABeeZee;
