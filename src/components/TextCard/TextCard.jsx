@@ -5,12 +5,14 @@ import { WrapComment } from "../Comment/WrapComment";
 import { formatDate } from "../../utils/time";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
+import { formatDateYMD } from "../../utils/formatDateYMD";
 
 const cx = classNames.bind(styles);
 
 function TextCard(data) {
   const [openComment, setOpenComment] = useState(false);
   const [like, setLike] = useState(data.data.likes);
+  const day = formatDateYMD(data.data.created_at);
   console.log(data);
   const handleLikeButtonClick = () => {
     setLike(like + 1);
@@ -29,7 +31,9 @@ function TextCard(data) {
               <div className={cx("prfileName")}>{data.data.name}</div>
               <div className={cx("profileDate")}>{formatDate(data.data.created_at)}</div>
             </div>
-            <p className={cx("content")}>{data.data.qs}</p>
+            <a href={data.data.link}>
+              <p className={cx("content")}>{data.data.qs}</p>
+            </a>
           </div>
         </div>
         <div className={cx("commetWrapper")}>
