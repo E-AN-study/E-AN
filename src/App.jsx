@@ -1,6 +1,6 @@
 import { TextList } from "./pages/TextList";
 import ChapterListPage from "../src/pages/ChapterListPage";
-import Edit from "./pages/Edit";
+import Edit from "./pages/edit";
 import MainPage from "./pages/main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
