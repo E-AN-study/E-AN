@@ -66,8 +66,6 @@ export function TextList() {
         >
           <img src={linkIcon} />
         </button>
-      </div>
-      <div>
         <button className={cx("kakaotalk")} onClick={() => shareKakaoLink(url)}>
           <img src={kakaotalk} />
         </button>
@@ -84,7 +82,7 @@ export function TextList() {
           이미 {usersData.length}명이 공부했습니다.
         </div>
 
-        {/* Render a TextCard for each item in usersData */}
+        {/* Render a TextCard for each it``m in usersData */}
         {usersData.map((userData, index) => (
           <TextCard key={index} data={userData} />
         ))}

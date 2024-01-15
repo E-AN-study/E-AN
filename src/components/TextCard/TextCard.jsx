@@ -2,6 +2,7 @@ import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./TextCard.module.scss";
 import { WrapComment } from "../Comment/WrapComment";
+import { formatDate } from "../../utils/time";
 import profileImg from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
 import { formatDateYMD } from "../../utils/formatDateYMD";
@@ -28,7 +29,7 @@ function TextCard(data) {
           <div>
             <div className={cx("wrapper")}>
               <div className={cx("prfileName")}>{data.data.name}</div>
-              <div className={cx("profileDate")}>{day}</div>
+              <div className={cx("profileDate")}>{formatDate(data.data.created_at)}</div>
             </div>
             <a href={data.data.link}>
               <p className={cx("content")}>{data.data.qs}</p>
