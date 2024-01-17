@@ -1,7 +1,7 @@
 import styles from "./edit.module.scss";
 import classNames from "classnames/bind";
 import editIcon from "../../assets/Messages.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import profile1 from "../../assets/profile1.jpg";
 import profile2 from "../../assets/profile2.jpg";
@@ -25,14 +25,17 @@ export default function Edit() {
   const [isValidUrl, setIsValidUrl] = useState(false);
   const [profileImg, setProfileImg] = useState("");
 
-  async function addUser(name, link, qs, profile) {
-    let { data, error } = await supabase.from(`ean`).insert([{ name, link, qs, profile }]);
+  const { id } = useParams();
+
+  async function addUser(name, link, qs, profile, comment) {
+    let { data, error } = await supabase.from(`ean${id}`).insert([{ name, link, qs, profile, comment }]);
     if (error) console.log("Error", error);
     else return data;
   }
 
   const submit = () => {
-    addUser(postData.name, postData.url, question, profileImg);
+    let comment = [];
+    addUser(postData.name, postData.url, question, profileImg, comment);
   };
 
   const handleChange = (e) => {

@@ -1,5 +1,6 @@
 .commentList {
   @include column-flexbox();
+  // flex-direction: column-reverse;
   gap: 1rem;
   padding: 1rem;
   width: 100%;
@@ -17,8 +18,10 @@
     @include text-style(16, 400, $black);
     width: 68.4rem;
     height: 19.2rem;
+    padding-left: 1rem;
+    background-color: $gray-20;
     border-radius: 0.8rem;
-    border: 0.1rem solid $black;
+    border: 0.1rem solid $gray-40;
   }
   &-button {
     @include text-style(16, 400, $white);
