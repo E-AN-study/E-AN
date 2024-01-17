@@ -1,4 +1,3 @@
-### project url : https://e-an.netlify.app/
 작성중..
 # 이.안?
 
