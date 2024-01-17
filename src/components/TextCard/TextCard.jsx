@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 
 const cx = classNames.bind(styles);
 
+const deletePwd = import.meta.env.VITE_APP_PWD;
 const supabaseUrl = import.meta.env.VITE_APP_KEY;
 const supabaseKey = import.meta.env.VITE_APP_SECRET_CODE;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -61,11 +62,9 @@ function TextCard(data) {
   const handleComment = () => {
     setOpenComment((prevState) => !prevState);
   };
-
   const deleteClick = () => {
     const pwd = prompt("비밀번호를 입력해주세요.");
-    console.log(pwd);
-    if (pwd === "1234") {
+    if (pwd === deletePwd) {
       deleteUser(data.data.id);
     }
   };
