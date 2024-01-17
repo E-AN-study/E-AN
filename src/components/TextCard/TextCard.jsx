@@ -1,31 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./TextCard.module.scss";
 import { WrapComment } from "../Comment/WrapComment";
 import { formatDate } from "../../utils/time";
-import profileImg from "../../assets/sample.png";
+import profile1 from "../../assets/profile1.jpg";
+import profile2 from "../../assets/profile2.jpg";
+import profile3 from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
-import { formatDateYMD } from "../../utils/formatDateYMD";
+import { createClient } from "@supabase/supabase-js";
+import { useParams } from "react-router";
 
 const cx = classNames.bind(styles);
 
+const supabaseUrl = import.meta.env.VITE_APP_KEY;
+const supabaseKey = import.meta.env.VITE_APP_SECRET_CODE;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 function TextCard(data) {
   const [openComment, setOpenComment] = useState(false);
-  const [like, setLike] = useState(data.data.likes);
-  const day = formatDateYMD(data.data.created_at);
-  console.log(data);
+  const [like, setLike] = useState(data.data.likes ? data.data.likes : 0);
+  const [profile, setProfile] = useState("");
+
+  const { index } = useParams();
+
+  async function addLike(ids, likes) {
+    let { data, error } = await supabase
+      .from(`ean${index}`)
+      .update([{ likes: likes }])
+      .eq("id", ids);
+    if (error) console.log("Error", error);
+    else return data;
+  }
+
   const handleLikeButtonClick = () => {
-    setLike(like + 1);
+    const likes = like + 1;
+    setLike(likes);
+    addLike(data.data.id, likes);
   };
+
   const handleComment = () => {
     setOpenComment((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (data.data.profile === "profile1") {
+      setProfile(profile1);
+    } else if (data.data.profile === "profile2") {
+      setProfile(profile2);
+    } else if (data.data.profile === "profile3") {
+      setProfile(profile3);
+    } else {
+      setProfile(profile1);
+    }
+  }, [data.data.profile]);
 
   return (
     <>
       <div className={cx("container")}>
         <div className={cx("profileWrapper")}>
-          <img className={cx("profileImg")} src={profileImg} alt="profile image" />
+          <img className={cx("profileImg")} src={profile} alt="profile image" />
           <div>
             <div className={cx("wrapper")}>
               <div className={cx("prfileName")}>{data.data.name}</div>
