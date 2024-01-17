@@ -16,9 +16,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 function ChapterCard({ title, index }) {
   const [usersData, setUsersData] = useState([]);
-
   async function fetchUsers() {
-    let { data: users, error } = await supabase.from("ean").select("*");
+    let { data: users, error } = await supabase.from(`ean${index}`).select("*");
     if (error) {
       console.log("Error", error);
     } else {
@@ -38,9 +37,7 @@ function ChapterCard({ title, index }) {
         <div className="chapter-card-writtenarticle-section">
           <img src={messages} alt="Messages" />
           <div className="chapter-card-writtenarticle">작성된 글</div>
-          <div className="chapter-card-writtenarticle-num">
-            {usersData.length}개
-          </div>
+          <div className="chapter-card-writtenarticle-num">{usersData.length}개</div>
         </div>
       </button>
     </Link>
