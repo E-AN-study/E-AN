@@ -49,8 +49,8 @@
 
 .listBtn {
   position: absolute;
- top: -6rem;
- right: 1rem;
+  top: -6rem;
+  right: 1rem;
 }
 
 .studyBtn {
@@ -60,7 +60,8 @@
 }
 
 .textCardList {
-  width: 71.6rem;
+  width: 100%;
+  max-width: 71.6rem;
   height: auto;
   display: inline-flex;
   flex-direction: column;

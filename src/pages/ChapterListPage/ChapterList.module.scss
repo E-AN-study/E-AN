@@ -12,3 +12,14 @@
   gap: 30px;
   align-self: stretch;
 }
+
+@media all and (max-width: 1124px) {
+  .chaptercardlist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media all and (max-width: 767px) {
+  .chaptercardlist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
