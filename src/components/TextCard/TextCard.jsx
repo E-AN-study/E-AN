@@ -4,7 +4,7 @@ import styles from "./TextCard.module.scss";
 import { WrapComment } from "../Comment/WrapComment";
 import { formatDate } from "../../utils/time";
 import profile1 from "../../assets/profile1.jpg";
-import profile2 from "../../assets/profile2.jpg";
+import profile2 from "../../assets/profile2.png";
 import profile3 from "../../assets/sample.png";
 import likeButton from "../../assets/thumbs-up.svg";
 import { createClient } from "@supabase/supabase-js";
