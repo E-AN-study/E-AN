@@ -32,6 +32,6 @@
 - Github Flow를 최대한 지켜가며 제작
 
 ## 참고자료
-- 혼자 공부하는 컴퓨터 구조 + 운영체제
-- React 공식 문서
+- 혼자 공부하는 컴퓨터 구조 + 운영체제 (https://www.youtube.com/watch?v=kFWP6sFKyp0)
+- React 공식 문서 (https://ko.legacy.reactjs.org/)
 
