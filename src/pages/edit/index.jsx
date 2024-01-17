@@ -24,7 +24,6 @@ export default function Edit() {
   const [postData, setPostData] = useState({});
   const [isValidUrl, setIsValidUrl] = useState(false);
   const [profileImg, setProfileImg] = useState("");
-  const [dataReady, setDataReady] = useState(0);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -54,10 +53,6 @@ export default function Edit() {
     setPostData((prev) => ({ ...prev, [dataKey]: dataValue }));
   };
 
-  useEffect(() => {
-    setDataReady(Object.values(postData).length);
-  }, [postData]);
-
   return (
     <div className={cx("wrap")}>
       <div className={cx("editInner")}>
@@ -81,7 +76,6 @@ export default function Edit() {
               onChange={handleChange}
             />
           </div>
-
           <div className={cx("profileImg")}>
             <label>내 얼굴</label>
             <input
@@ -123,7 +117,6 @@ export default function Edit() {
               <img src={profile3} />
             </label>
           </div>
-
           <div>
             <label htmlFor="editUrl">내 공부 기록</label>
             <input
@@ -135,7 +128,6 @@ export default function Edit() {
             />
             {postData.url && !isValidUrl && <p className={cx("errorMsg")}>올바른 주소를 입력해 주세요</p>}
           </div>
-
           <div>
             <label htmlFor="editQuestion">이거 모르겠어...</label>
             <Question
@@ -146,13 +138,9 @@ export default function Edit() {
             ></Question>
           </div>
 
-          {dataReady >= 3 ? (
-            <button type="submit" className={cx("editButton")} onClick={submit}>
-              글 작성하기
-            </button>
-          ) : (
-            <button className={cx("editButtonNon")}>글 작성하기</button>
-          )}
+          <button type="submit" className={cx("editButton")} onClick={submit}>
+            글 작성하기
+          </button>
         </form>
       </div>
     </div>
