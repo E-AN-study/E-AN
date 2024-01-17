@@ -1,6 +1,6 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import { shareKakaoLink } from "../../utils/shareKaKaoLink";
-import styles from "./TextList.module.scss";
+import styles from "./TextListDelete.module.scss";
 import classNames from "classnames/bind";
 import logo from "../../assets/EAN-logo.png";
 import linkIcon from "../../assets/link.svg";
@@ -17,14 +17,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const cx = classNames.bind(styles);
 
-export function TextList() {
+export default function TextList() {
   const { index } = useParams();
   const location = useLocation();
-  const [usersData, setUsersData] = useState([]);
-
   const title = location.state ? location.state.title : "";
-
-  usersData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   let url = window.location.href;
   const baseUrl = window.location.host;
@@ -38,6 +34,8 @@ export function TextList() {
       alert("복사 실패!");
     }
   };
+  const [usersData, setUsersData] = useState([]);
+  console.log(usersData);
 
   // Step 2: Modify fetchUsers to update the state
   async function fetchUsers() {
@@ -72,11 +70,8 @@ export function TextList() {
 
       <div className={cx("textCardList")}>
         <div className={cx("listBtn")}>
-          <Link to="/List">
-            <Button text={"글 목록"} />
-          </Link>
-          <Link to={`/textlistdelete/${index}`}>
-            <Button text={"삭제하러 가기"} />
+          <Link to={`/textlist/${index}`}>
+            <Button text={"글 리스트로 이동"} />
           </Link>
         </div>
         <div className={cx("listTitle")}>
@@ -86,7 +81,7 @@ export function TextList() {
 
         {/* Render a TextCard for each it``m in usersData */}
         {usersData.map((userData, index) => (
-          <TextCard key={index} data={userData} is={"list"} />
+          <TextCard key={index} data={userData} is={"delete"} setUsersData={setUsersData} />
         ))}
       </div>
       <div className={cx("studyBtn")}>

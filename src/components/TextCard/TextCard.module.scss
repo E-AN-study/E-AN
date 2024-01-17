@@ -67,3 +67,13 @@
   font-weight: 400;
   line-height: 1.8rem;
 }
+
+.deleteBtn {
+  width: 3rem;
+  position: absolute;
+  right: 5rem;
+  cursor: pointer;
+  & img {
+    width: 100%;
+  }
+}
