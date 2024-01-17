@@ -23,9 +23,7 @@ const chapterTitles = [
 ];
 
 function ChapterList() {
-  const cards = chapterTitles.map((title, index) => (
-    <ChapterCard key={index} title={title} index={index + 1} />
-  ));
+  const cards = chapterTitles.map((title, index) => <ChapterCard key={index} title={title} index={index + 1} />);
 
   return (
     <div className={cx("chaptercardlist-section")}>
