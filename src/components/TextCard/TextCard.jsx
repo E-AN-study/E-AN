@@ -20,7 +20,6 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 // const [usersData, setUsersData] = useState([]);
 
 function TextCard(data) {
-  console.log(data);
   const [openComment, setOpenComment] = useState(false);
   const [like, setLike] = useState(data.data.likes ? data.data.likes : 0);
   const [profile, setProfile] = useState("");
@@ -66,6 +65,8 @@ function TextCard(data) {
     const pwd = prompt("비밀번호를 입력해주세요.");
     if (pwd === deletePwd) {
       deleteUser(data.data.id);
+    } else {
+      alert("비밀번호가 틀려 삭제할 수 없습니다.");
     }
   };
 
@@ -110,7 +111,7 @@ function TextCard(data) {
           </button>
         </div>
       </div>
-      {openComment && <WrapComment commentData={data.data.comment} />}
+      {openComment && <WrapComment commentData={data.data.comment} datas={data} />}
     </>
   );
 }
