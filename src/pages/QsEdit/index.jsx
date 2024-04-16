@@ -51,7 +51,7 @@ export default function QsEdit() {
             <img src={editIcon} className={cx("editIcon")} alt="edit아이콘" />
             질문을 하세요
           </h1>
-          <Link to={`/textList/${id}`}>
+          <Link to={`/qs`}>
             <p>X</p>
           </Link>
         </div>
