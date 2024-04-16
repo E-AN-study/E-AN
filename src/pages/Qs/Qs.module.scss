@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.logoImg {
+  width: 20rem;
+  margin-top: 7rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 4rem;
+  text-align: center;
+}
+
+.shareButton {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.linkIcon {
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  padding: 1.2rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 20rem;
+  background: $brown-40;
+}
+
+.kakaotalk {
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  padding: 1.2rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 20rem;
+  background: $yellow-50;
+}
+
+.listBtn {
+  display: flex;
+  position: absolute;
+  top: -6rem;
+  right: 1rem;
+  gap: 1rem;
+}
+
+.studyBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 4rem;
+}
+
+.textCardList {
+  width: 100%;
+  max-width: 71.6rem;
+  height: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $brown-10;
+  padding: 1.6rem;
+  margin-bottom: 7rem;
+  margin-top: 4rem;
+  gap: 1.6rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid $brown-30;
+  position: relative;
+}
+
+.listTitle {
+  display: flex;
+  align-items: center;
+  color: $brown-40;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+
+.messageIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: 1rem;
+}
