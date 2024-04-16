@@ -19,6 +19,7 @@ export function WrapComment({ commentData, datas }) {
   const [comment, setComment] = useState(commentData);
   const [visibleCount, setVisibleCount] = useState(3);
   const { index } = useParams();
+  console.log(window.location.pathname);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -29,8 +30,9 @@ export function WrapComment({ commentData, datas }) {
   };
 
   async function updateComment(index, text, id) {
-    console.log(index, text, id);
-    const { data, error } = await supabase.from(`ean${index}`).update({ comment: text }).match({ id: id });
+    const basePath = window.location.pathname === "/qs" ? "eanqs" : `ean${index}`;
+    const { data, error } = await supabase.from(basePath).update({ comment: text }).match({ id: id });
+
     console.log(error);
   }
 
@@ -59,8 +61,6 @@ export function WrapComment({ commentData, datas }) {
           type="text"
           placeholder="댓글을 입력해주세요"
           defaultValue={input}
-          // onChange={(e) => setInput(e.target.value)}
-          // onKeyDown={onKeyDown}
         />
 
         <button className={cx("inputBox-button")} type="submit">

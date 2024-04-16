@@ -27,8 +27,9 @@ function TextCard(data) {
   const { index } = useParams();
 
   async function addLike(ids, likes) {
+    const basePath = window.location.pathname === "/qs" ? "eanqs" : `ean${index}`;
     let { data, error } = await supabase
-      .from(`ean${index}`)
+      .from(basePath)
       .update([{ likes: likes }])
       .eq("id", ids);
     if (error) console.log("Error", error);
