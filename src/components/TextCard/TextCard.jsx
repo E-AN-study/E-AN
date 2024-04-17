@@ -93,9 +93,13 @@ function TextCard(data) {
               <div className={cx("prfileName")}>{data.data.name}</div>
               <div className={cx("profileDate")}>{formatDate(data.data.created_at)}</div>
             </div>
-            <a href={data.data.link}>
+            {data.data.link !== null ? (
+              <a href={data.data.link}>
+                <p className={cx("contentLink")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
+              </a>
+            ) : (
               <p className={cx("content")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
-            </a>
+            )}
           </div>
           {data.is === "delete" && (
             <div className={cx("deleteBtn")} onClick={deleteClick}>

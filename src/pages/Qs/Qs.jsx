@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { shareKakaoLink } from "../../utils/shareKaKaoLink";
 import styles from "./Qs.module.scss";
 import classNames from "classnames/bind";
@@ -18,11 +18,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const cx = classNames.bind(styles);
 
 export function Qs() {
-  const { index } = useParams();
   const location = useLocation();
   const [usersData, setUsersData] = useState([]);
-
-  const title = location.state ? location.state.title : "";
+  const [addData, setAddData] = useState(0);
 
   usersData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
@@ -51,7 +49,7 @@ export function Qs() {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [addData]);
 
   return (
     <div className={cx("container")}>
@@ -88,7 +86,7 @@ export function Qs() {
       </div>
       <div className={cx("studyBtn")}>
         <Link to={`/qsEdit`}>
-          <Button text={"나도 질문하기"} />
+          <Button text={"나도 질문하기"} onClick={() => setAddData((prev) => prev + 1)} />
         </Link>
       </div>
     </div>
