@@ -1,7 +1,7 @@
 import styles from "./edit.module.scss";
 import classNames from "classnames/bind";
 import editIcon from "../../assets/Messages.svg";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import profile1 from "../../assets/profile1.jpg";
 import profile2 from "../../assets/profile2.png";
@@ -21,7 +21,6 @@ export default function QsEdit() {
   const [postData, setPostData] = useState({});
   const [profileImg, setProfileImg] = useState("");
 
-  const { id } = useParams();
   const navigate = useNavigate();
 
   async function addUser(name, link, qs, profile, comment) {
@@ -107,7 +106,7 @@ export default function QsEdit() {
               <img src={profile3} />
             </label>
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="editUrl">내 공부 기록</label>
             <input
               type="text"
@@ -116,7 +115,7 @@ export default function QsEdit() {
               placeholder="링크를 입력해주세요"
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div>
             <label htmlFor="editQuestion">이거 모르겠어...</label>
             <Question

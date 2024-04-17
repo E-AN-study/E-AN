@@ -52,12 +52,19 @@
   cursor: pointer;
 }
 
-.content {
+.contentLink {
   color: $black;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.2rem;
   text-decoration-line: underline;
+}
+
+.content {
+  color: $black;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.2rem;
 }
 
 .comment {
