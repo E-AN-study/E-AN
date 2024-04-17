@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const cx = classNames.bind(styles);
 
-export default function Edit() {
+export default function Update({ isEdit = false }) {
   const [question, setQuestion] = useState("");
   const [postData, setPostData] = useState({});
   const [profileImg, setProfileImg] = useState("");
@@ -110,7 +110,7 @@ export default function Edit() {
           <div>
             <label htmlFor="editUrl">내 공부 기록</label>
             <input
-              type="text"
+              type="url"
               id="editUrl"
               className={cx("editInput", "editUrl")}
               placeholder="링크를 입력해주세요"

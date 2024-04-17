@@ -7,9 +7,10 @@ import profile1 from "../../assets/profile1.jpg";
 import profile2 from "../../assets/profile2.png";
 import profile3 from "../../assets/sample.png";
 import deleted from "../../assets/deleted.svg";
+import pencil from "../../assets/pencil.png";
 import likeButton from "../../assets/thumbs-up.svg";
 import { createClient } from "@supabase/supabase-js";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const cx = classNames.bind(styles);
 
@@ -23,6 +24,7 @@ function TextCard(data) {
   const [openComment, setOpenComment] = useState(false);
   const [like, setLike] = useState(data.data.likes ? data.data.likes : 0);
   const [profile, setProfile] = useState("");
+  const navigate = useNavigate();
 
   const { index } = useParams();
 
@@ -34,6 +36,15 @@ function TextCard(data) {
     if (error) console.log("Error", error);
     else return data;
   }
+
+  const handleRouteEdit = () => {
+    const pwd = prompt("게시글을 수정하시려면 입력해주세요.");
+    if (pwd === deletePwd) {
+      navigate(`/textList/${index}/edit/${data.data.id}`);
+    } else {
+      alert("비밀번호를 잘못 입력하셨습니다.");
+    }
+  };
 
   const handleLikeButtonClick = () => {
     const likes = like + 1;
@@ -91,11 +102,15 @@ function TextCard(data) {
             <div className={cx("wrapper")}>
               <div className={cx("prfileName")}>{data.data.name}</div>
               <div className={cx("profileDate")}>{formatDate(data.data.created_at)}</div>
+              <button className={cx("editer")} onClick={handleRouteEdit}>
+                <img className={cx("editer-img")} src={pencil} alt="수정하기" />
+              </button>
             </div>
             <a href={data.data.link}>
               <p className={cx("content")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
             </a>
           </div>
+
           {data.is === "delete" && (
             <div className={cx("deleteBtn")} onClick={deleteClick}>
               <img src={deleted} alt="삭제버튼" />
