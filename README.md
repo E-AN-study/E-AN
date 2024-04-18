@@ -10,7 +10,7 @@
 
 ## 팀원
 - 김윤수 : 
-  edit페이지 디자인 제작, edit페이지 post 기능구현 textlist페이지 delete, 좋아요버튼 구현 supabase 테이블 생성 및 관리
+  edit페이지 디자인 제작, edit페이지 post 기능구현 textlist페이지 delete, 좋아요버튼 구현 supabase 테이블 생성 및 관리, 댓글 기능 구현, 질문 페이지 제작 및 구현
 - 이준기 : 
   메인페이지 디자인 구현, 카드리스트 삭제하기 기능 구현
 - 임주민 : 
