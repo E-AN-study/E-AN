@@ -15,15 +15,17 @@ function SortButton() {
         </Link>
       </div>
       <div className={cx("sortButtonContainer-Wrapper")}>
-        <button className={cx("sortButton")}>
-          <p>공부 질문</p>
-        </button>
+        <Link to="/qs">
+          <button className={cx("sortButton")}>
+            <p>공부 질문</p>
+          </button>
+        </Link>
       </div>
-      <div className={cx("sortButtonContainer-Wrapper")}>
+      {/* <div className={cx("sortButtonContainer-Wrapper")}>
         <button className={cx("sortButton")}>
           <p>개발 자료</p>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

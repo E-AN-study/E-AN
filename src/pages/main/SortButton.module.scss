@@ -1,7 +1,7 @@
 .sortButtonContainer {
   @include column-flexbox(center, center);
   gap: 1.8rem;
-  padding-bottom: 11.4rem;
+  // padding-bottom: 11.4rem;
 
   &-Wrapper {
     @include flexbox(center, center);
