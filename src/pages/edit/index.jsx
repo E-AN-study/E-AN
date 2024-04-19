@@ -2,7 +2,7 @@ import styles from "./edit.module.scss";
 import classNames from "classnames/bind";
 import editIcon from "../../assets/Messages.svg";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import profile1 from "../../assets/profile1.jpg";
 import profile2 from "../../assets/profile2.png";
 import profile3 from "../../assets/sample.png";
@@ -21,19 +21,63 @@ export default function Update({ isEdit = false }) {
   const [postData, setPostData] = useState({});
   const [profileImg, setProfileImg] = useState("");
 
-  const { id } = useParams();
+  const parm = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isEdit) {
+        try {
+          const { data, error } = await supabase.from(`ean${parm.index}`).select("*").eq("id", parm.id);
+          if (error) {
+            throw error;
+          }
+
+          const userData = data[0];
+          setPostData({ name: userData.name, url: userData.link, profile: userData.profile });
+          setQuestion(userData.qs);
+          setProfileImg(userData.profile);
+          console.log(userData);
+        } catch (error) {
+          console.error("Error fetching data:", error.message);
+        }
+      }
+    };
+
+    fetchData();
+  }, [isEdit, parm.index, parm.id]);
+
   async function addUser(name, link, qs, profile, comment) {
-    let { data, error } = await supabase.from(`ean${id}`).insert([{ name, link, qs, profile, comment }]);
+    let { data, error } = await supabase.from(`ean${parm.index}`).insert([{ name, link, qs, profile, comment }]);
+    if (error) console.log("Error", error);
+    else return data;
+  }
+  async function editUser(name, link, qs, profile, comment) {
+    let { data, error } = await supabase
+      .from(`ean${parm.index}`)
+      .update({ name, link, qs, profile, comment })
+      .eq("id", parm.id);
     if (error) console.log("Error", error);
     else return data;
   }
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     let comment = [];
-    addUser(postData.name, postData.url, question, profileImg, comment);
-    navigate(`/textlist/${id}`);
+    if (isEdit) {
+      editUser(postData.name, postData.url, question, profileImg, comment).then(() =>
+        navigate(`/textlist/${parm.index}`)
+      );
+    } else {
+      addUser(postData.name, postData.url, question, profileImg, comment).then(() =>
+        navigate(`/textlist/${parm.index}`)
+      );
+    }
+  };
+
+  const handleClickRadio = (e) => {
+    const targetValue = e.target.value;
+    setProfileImg(targetValue);
   };
 
   const handleChange = (e) => {
@@ -51,7 +95,7 @@ export default function Update({ isEdit = false }) {
             <img src={editIcon} className={cx("editIcon")} alt="edit아이콘" />
             공부를 하세요
           </h1>
-          <Link to={`/textList/${id}`}>
+          <Link to={`/textList/${parm.index}`}>
             <p>X</p>
           </Link>
         </div>
@@ -63,6 +107,7 @@ export default function Update({ isEdit = false }) {
               id="editName"
               className={cx("editInput", "editName")}
               placeholder="이름을 입력해주세요"
+              value={postData.name}
               onChange={handleChange}
             />
           </div>
@@ -71,11 +116,11 @@ export default function Update({ isEdit = false }) {
             <input
               name="profileImg"
               type="radio"
+              value="profile1"
               id="profile1"
               className={cx("editInput", "profile")}
-              onClick={() => {
-                setProfileImg("profile1");
-              }}
+              checked={profileImg === "profile1"}
+              onChange={handleClickRadio}
             />
             <label htmlFor="profile1" className={cx("profileLabel")}>
               <img src={profile1} />
@@ -85,10 +130,10 @@ export default function Update({ isEdit = false }) {
               name="profileImg"
               type="radio"
               id="profile2"
+              value="profile2"
               className={cx("editInput", "profile")}
-              onClick={() => {
-                setProfileImg("profile2");
-              }}
+              checked={profileImg === "profile2"}
+              onChange={handleClickRadio}
             />
             <label htmlFor="profile2" className={cx("profileLabel")}>
               <img src={profile2} />
@@ -98,10 +143,10 @@ export default function Update({ isEdit = false }) {
               name="profileImg"
               type="radio"
               id="profile3"
+              value="profile3"
               className={cx("editInput", "profile")}
-              onClick={() => {
-                setProfileImg("profile3");
-              }}
+              checked={profileImg === "profile3"}
+              onChange={handleClickRadio}
             />
             <label htmlFor="profile3" className={cx("profileLabel")}>
               <img src={profile3} />
@@ -110,16 +155,18 @@ export default function Update({ isEdit = false }) {
           <div>
             <label htmlFor="editUrl">내 공부 기록</label>
             <input
-              type="url"
+              type="text"
               id="editUrl"
               className={cx("editInput", "editUrl")}
               placeholder="링크를 입력해주세요"
+              value={postData.url}
               onChange={handleChange}
             />
           </div>
           <div>
             <label htmlFor="editQuestion">이거 모르겠어...</label>
             <Question
+              value={question}
               onChange={setQuestion}
               id="editQuestion"
               className={cx("editInput", "editQuestion")}
@@ -128,7 +175,7 @@ export default function Update({ isEdit = false }) {
           </div>
 
           <button type="submit" className={cx("editButton")} onClick={submit}>
-            글 작성하기
+            {isEdit ? "글 수정하기" : "글 작성하기"}
           </button>
         </form>
       </div>
