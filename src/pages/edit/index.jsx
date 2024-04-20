@@ -74,6 +74,7 @@ export default function Update({ isEdit = false }) {
       );
     } else {
       addUser(postData.name, postData.url, question, profileImg, postData.comment).then(() =>
+
         navigate(`/textlist/${parm.index}`)
       );
     }
