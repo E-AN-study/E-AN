@@ -29,8 +29,9 @@ function TextCard(data) {
   const { index } = useParams();
 
   async function addLike(ids, likes) {
+    const basePath = window.location.pathname === "/qs" ? "eanqs" : `ean${index}`;
     let { data, error } = await supabase
-      .from(`ean${index}`)
+      .from(basePath)
       .update([{ likes: likes }])
       .eq("id", ids);
     if (error) console.log("Error", error);
@@ -106,9 +107,13 @@ function TextCard(data) {
                 <img className={cx("editer-img")} src={pencil} alt="수정하기" />
               </button>
             </div>
-            <a href={data.data.link}>
+            {data.data.link !== null ? (
+              <a href={data.data.link}>
+                <p className={cx("contentLink")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
+              </a>
+            ) : (
               <p className={cx("content")} dangerouslySetInnerHTML={{ __html: data.data.qs }}></p>
-            </a>
+            )}
           </div>
 
           {data.is === "delete" && (
