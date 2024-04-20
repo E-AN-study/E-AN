@@ -63,12 +63,10 @@ export default function Update({ isEdit = false }) {
 
   const submit = (e) => {
     e.preventDefault();
-    let comment = [];
     if (isEdit) {
-      editUser(postData.name, postData.url, question, profileImg, comment).then(() =>
-        navigate(`/textlist/${parm.index}`)
-      );
+      editUser(postData.name, postData.url, question, profileImg).then(() => navigate(`/textlist/${parm.index}`));
     } else {
+      let comment = [];
       addUser(postData.name, postData.url, question, profileImg, comment).then(() =>
         navigate(`/textlist/${parm.index}`)
       );
