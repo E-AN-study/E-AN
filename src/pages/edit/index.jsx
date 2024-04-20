@@ -34,7 +34,12 @@ export default function Update({ isEdit = false }) {
           }
 
           const userData = data[0];
-          setPostData({ name: userData.name, url: userData.link, profile: userData.profile });
+          setPostData({
+            name: userData.name,
+            url: userData.link,
+            profile: userData.profile,
+            comment: userData.comment,
+          });
           setQuestion(userData.qs);
           setProfileImg(userData.profile);
           console.log(userData);
@@ -63,13 +68,13 @@ export default function Update({ isEdit = false }) {
 
   const submit = (e) => {
     e.preventDefault();
-    let comment = [];
+    // let comment = [];
     if (isEdit) {
-      editUser(postData.name, postData.url, question, profileImg, comment).then(() =>
+      editUser(postData.name, postData.url, question, profileImg, postData.comment).then(() =>
         navigate(`/textlist/${parm.index}`)
       );
     } else {
-      addUser(postData.name, postData.url, question, profileImg, comment).then(() =>
+      addUser(postData.name, postData.url, question, profileImg, postData.comment).then(() =>
         navigate(`/textlist/${parm.index}`)
       );
     }
